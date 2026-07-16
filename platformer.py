@@ -27,7 +27,7 @@ blob_surf = pygame.transform.scale(blob_surf,(60//3,25))
 coin_surf = pygame.image.load("./img/coin.png").convert_alpha()
 
 dirt_surf = pygame.image.load("./img/dirt.png").convert()
-
+dirt_surf = pygame.transform.scale(dirt_surf,(25,25))
 exit_surf = pygame.image.load("./img/exit.png").convert_alpha()
             
 def player_animation(left, right):
@@ -58,7 +58,37 @@ player_rect = player_surf.get_rect(midbottom = (25,500))
     
 
 
-world = [
+LEVEL1 = [
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5         7             5",
+    "5         ###           5",
+    "5             ###       5",
+    "5                 ###   5",
+    "5                     ##5",
+    "5               ###     5",
+    "5          # ##         5",
+    "5      111              5",
+    "5  1   #####            5",
+    "5  #                    5",
+    "5   #                   5",
+    "5     # #    9   9      5",
+    "5         ##########    5",
+    "5                    1  5",
+    "5                    ## 5",
+    "5                 111   5",
+    "5           # # ########5",
+    "5      ####00000########5",
+    "5     ##################5",
+    "5    ###################5",
+    "5#######################5",
+
+]
+
+LEVEL2 = [
     "                          ",
     "                          ",
     "                          ",
@@ -97,13 +127,14 @@ world = [
     "                          ",
 ]
 
+
 grass = []
 lava = []
 coin =  []
 blob = []
 dirt = []
 exit = []
-for index, item in enumerate(world):
+for index, item in enumerate(LEVEL1):
     for letter_index, letter in enumerate(item):
         if letter == "0":
             x = letter_index * 25 
@@ -240,3 +271,12 @@ while True:
 
     pygame.display.update()
     clock.tick(60)
+
+
+
+
+
+
+
+
+
