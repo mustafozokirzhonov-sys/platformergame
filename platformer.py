@@ -1,4 +1,4 @@
-import pygame 
+import pygame
 from sys import exit
 
 pygame.init() 
@@ -28,7 +28,7 @@ coin_surf = pygame.image.load("./img/coin.png").convert_alpha()
 
 dirt_surf = pygame.image.load("./img/dirt.png").convert()
 dirt_surf = pygame.transform.scale(dirt_surf,(25,25))
-exit_surf = pygame.image.load("./img/exit.png").convert_alpha()
+door_surf = pygame.image.load("./img/exit.png").convert_alpha()
             
 def player_animation(left, right):
     global player_surf, player_index
@@ -59,23 +59,53 @@ player_rect = player_surf.get_rect(midbottom = (25,500))
 
 
 LEVEL1 = [
+    "5555555555555555555555555",
     "5                       5",
     "5                       5",
     "5                       5",
     "5                       5",
     "5                       5",
-    "5         7             5",
-    "5         ###           5",
-    "5             ###       5",
-    "5                 ###   5",
-    "5                     ##5",
-    "5               ###     5",
-    "5          # ##         5",
-    "5      111              5",
-    "5  1   #####            5",
-    "5  #                    5",
-    "5   #                   5",
-    "5     # #    9   9      5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                 111  75",
+    "5           # # ########5",
+    "5      ####00000########5",
+    "5     ##################5",
+    "5    ###################5",
+    "5########################5",
+
+]
+
+LEVEL2 = [
+    "5555555555555555555555555",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5         7    9        5",
     "5         ##########    5",
     "5                    1  5",
     "5                    ## 5",
@@ -85,97 +115,154 @@ LEVEL1 = [
     "5     ##################5",
     "5    ###################5",
     "5#######################5",
-
 ]
 
-LEVEL2 = [
-    "                          ",
-    "                          ",
-    "                          ",
-    "                          ",
-    "                          ",
-    "         7                ",
-    "         ###              ",
-    "             ###          ",
-    "                 ###      ",
-    "                     ###  ",
-    "               ###        ",
-    "          # ##            ",
-    "      111                 ",
-    "  1   #####               ",
-    "  #                       ",
-    "   #                      ",
-    "     # #    9   9         ",
-    "         ##########       ",
-    "                    1     ",
-    "                    ##    ",
-    "                 111      ",
-    "           # # #########5 ",
-    "      ####00000#########  ",
-    "     ###################  ",
-    "    ####################  ",
-    "########################  ",
-    "                          ",
-    "                          ",
-    "                          ",
-    "                          ",
-    "                          ",
-    "                          ",
-    "                          ",
-    "                          ",
-    "                          ",
-    "                          ",
+LEVEL3 = [
+    "5555555555555555555555555",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                 7     5",
+    "5                ##     5",
+    "5         #####         5",
+    "5      #                5",
+    "5       #      9        5",
+    "5         ##########    5",
+    "5                    1  5",
+    "5                    ## 5",
+    "5                 111   5",
+    "5           # # ########5",
+    "5      ####00000########5",
+    "5     ##################5",
+    "5    ###################5",
+    "5#######################5",
+]
+LEVEL4 = [
+    "5555555555555555555555555",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5        7               5",
+    "5        ###            5",
+    "5            ###        5",
+    "5                ##     5",
+    "5         #####         5",
+    "5      #                5",
+    "5       #      9        5",
+    "5         ##########    5",
+    "5                    1  5",
+    "5                    ## 5",
+    "5                 111   5",
+    "5           # # ########5",
+    "5      ####00000########5",
+    "5     ##################5",
+    "5    ###################5",
+    "5#######################5",
+]
+LEVEL5 = [
+    "5555555555555555555555555",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5                       5",
+    "5           7            5",
+    "5           ###         5",
+    "5               ###     5",
+    "5          ###          5",
+    "5    ###                5",
+    "5        ###            5",
+    "5            ###        5",
+    "5                ##     5",
+    "5         #####         5",
+    "5      #                5",
+    "5       #      9        5",
+    "5         ##########    5",
+    "5                    1  5",
+    "5                    ## 5",
+    "5                 111   5",
+    "5           # # ########5",
+    "5      ####00000########5",
+    "5     ##################5",
+    "5    ###################5",
+    "5#######################5",
 ]
 
 
-grass = []
-lava = []
-coin =  []
-blob = []
-dirt = []
-exit = []
-for index, item in enumerate(LEVEL1):
-    for letter_index, letter in enumerate(item):
-        if letter == "0":
-            x = letter_index * 25 
-            y = index * 25 
-            rect = lava_surf.get_rect(topleft=(x,y))
-            lava.append(rect)
 
-        if letter == "1":
-            x = letter_index * 25
-            y = index * 25
-            rect = coin_surf.get_rect(topleft=(x,y))
-            coin.append(rect)
+levels = [LEVEL1,LEVEL2,LEVEL3,LEVEL4,LEVEL5]
+level_index = 0
 
-        if letter == "#":
-            x = letter_index * 25
-            y = index * 25
-            rect = grass_surf.get_rect(topleft=(x,y))
-            grass.append(rect)
+def load_levels(level_index):
+    global grass , lava , coin , blob , dirt , door 
+    global on_ground , velocity_y
 
-        if letter == "9":
-            x = letter_index * 25
-            y = index * 25
-            rect = blob_surf.get_rect(topleft=(x,y))
-            blob.append(rect)
+    grass = []
+    lava = []
+    coin =  []
+    blob = []
+    dirt = []
+    door = []
 
-        if letter == "5":
-            x = letter_index * 25
-            y = index * 25
-            rect = dirt_surf.get_rect(topleft=(x,y))
-            dirt.append(rect)
+    for index, item in enumerate(levels[level_index]):
+        for letter_index, letter in enumerate(item):
+            if letter == "0":
+                x = letter_index * 25 
+                y = index * 25 
+                rect = lava_surf.get_rect(topleft=(x,y))
+                lava.append(rect)
 
-        if letter == "7":
-            x = letter_index * 25
-            y = index * 25
-            rect = exit_surf.get_rect(topleft=(x,y))
-            exit.append(rect)
+            if letter == "1":
+                x = letter_index * 25
+                y = index * 25
+                rect = coin_surf.get_rect(topleft=(x,y))
+                coin.append(rect)
 
-velocity_y = 0
-on_graund = True
-running = True
+            if letter == "#":
+                x = letter_index * 25
+                y = index * 25
+                rect = grass_surf.get_rect(topleft=(x,y))
+                grass.append(rect)
 
+            if letter == "9":
+                x = letter_index * 25
+                y = index * 25
+                rect = blob_surf.get_rect(topleft=(x,y))
+                blob.append(rect)
+
+            if letter == "5":
+                x = letter_index * 25
+                y = index * 25
+                rect = dirt_surf.get_rect(topleft=(x,y))
+                dirt.append(rect)
+
+            if letter == "7":
+                x = letter_index * 25
+                y = index * 25
+                rect = door_surf.get_rect(topleft=(x,y))
+                door.append(rect)
+
+
+
+    player_rect.midbottom = (50,500)
+    velocity_y = 0
+    on_ground = True
+    
+load_levels(level_index)
 coin_sound =  pygame.mixer.Sound("./img/coin.wav")
 
 while True:
@@ -186,9 +273,9 @@ while True:
 
     keys = pygame.key.get_pressed()
 
-    if keys[pygame.K_SPACE] and on_graund :
+    if keys[pygame.K_SPACE] and on_ground :
         velocity_y =-8
-        on_graund = False
+        on_ground = False
 
     if keys[pygame.K_d]:
         player_rect.x = player_rect.x + speed
@@ -208,6 +295,13 @@ while True:
             elif keys[pygame.K_a]:
                 player_rect.left = tile.right
 
+    for tile in dirt:
+        if player_rect.colliderect(tile):
+            if keys[pygame.K_d]:
+                player_rect.right = tile.left
+            elif keys[pygame.K_a]:
+                player_rect.left = tile.right
+
     velocity_y += 0.5
     player_rect.y += velocity_y 
 
@@ -216,7 +310,7 @@ while True:
             if velocity_y > 0:
                 velocity_y = 0
                 player_rect.bottom = item.top
-                on_graund = True
+                on_ground = True
             elif velocity_y < 0:
                 player_rect.top = item.bottom
                 velocity_y = 0
@@ -231,6 +325,18 @@ while True:
         if player_rect.colliderect(item):
             pygame.quit()
             exit()
+
+    for item in door:
+        if player_rect.colliderect(item):
+            level_index += 1
+            if level_index < len(levels):
+                load_levels(level_index)
+            else:
+                print("Победа!")
+                pygame.quit()
+                exit()
+            
+
 
 
                 
@@ -263,20 +369,11 @@ while True:
     for item in dirt:
         screen.blit(dirt_surf,item)
 
-    for item in exit:
-        screen.blit(exit_surf,item)
+    for item in door:
+        screen.blit(door_surf,item)
 
     screen.blit(player_surf,player_rect)
 
 
     pygame.display.update()
     clock.tick(60)
-
-
-
-
-
-
-
-
-
